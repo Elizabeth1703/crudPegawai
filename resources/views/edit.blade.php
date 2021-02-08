@@ -17,10 +17,25 @@
 	<form action="/pegawai/update" method="post">
 		{{ csrf_field() }}
 		<input type="hidden" name="id" value="{{ $p->pegawai_id }}"> <br/>
-		Nama <input type="text" required="required" name="nama" value="{{ $p->pegawai_nama }}"> <br/>
-		Jabatan <input type="text" required="required" name="jabatan" value="{{ $p->pegawai_jabatan }}"> <br/>
-		Umur <input type="number" required="required" name="umur" value="{{ $p->pegawai_umur }}"> <br/>
-		Alamat <textarea required="required" name="alamat">{{ $p->pegawai_alamat }}</textarea> <br/>
+		Nama <input type="text" name="nama" class="@error('nama') is-invalid @enderror"> <br/>
+			@error('nama')
+			<div class="invalid-feedback">{{ $message }}</div>
+        	@enderror
+		  
+		Jabatan <input type="text" name="jabatan" class="@error('jabatan') is-invalid @enderror"> <br/>
+			@error('jabatan')
+			<div class="invalid-feedback">{{ $message }}</div>
+        	@enderror
+		  
+		Umur <input type="text" name="umur" class="@error('umur') is-invalid @enderror"> <br/>
+			@error('umur')
+			<div class="invalid-feedback">{{ $message }}</div>
+        	@enderror
+		 
+		Alamat <textarea name="alamat" class="@error('alamat') is-invalid @enderror"></textarea> <br/>
+			@error('alamat')
+			<div class="invalid-feedback">{{ $message }}</div>
+        	@enderror
 		<input type="submit" value="Simpan Data">
 	</form>
 	@endforeach

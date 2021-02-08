@@ -14,10 +14,26 @@
  
 	<form action="/pegawai/store" method="post">
 		{{ csrf_field() }}
-		Nama <input type="text" name="nama" required="required"> <br/>
-		Jabatan <input type="text" name="jabatan" required="required"> <br/>
-		Umur <input type="number" name="umur" required="required"> <br/>
-		Alamat <textarea name="alamat" required="required"></textarea> <br/>
+		Nama <input type="text" name="nama" class="@error('nama') is-invalid @enderror"> <br/>
+			@error('nama')
+			<div class="invalid-feedback">{{ $message }}</div>
+        	@enderror
+		  
+		Jabatan <input type="text" name="jabatan" class="@error('jabatan') is-invalid @enderror"> <br/>
+			@error('jabatan')
+			<div class="invalid-feedback">{{ $message }}</div>
+        	@enderror
+		  
+		Umur <input type="text" name="umur" class="@error('umur') is-invalid @enderror"> <br/>
+			@error('umur')
+			<div class="invalid-feedback">{{ $message }}</div>
+        	@enderror
+		 
+		Alamat <textarea name="alamat" class="@error('alamat') is-invalid @enderror"></textarea> <br/>
+			@error('alamat')
+			<div class="invalid-feedback">{{ $message }}</div>
+        	@enderror
+		 
 		<input type="submit" value="Simpan Data">
 	</form>
  
